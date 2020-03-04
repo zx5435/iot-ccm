@@ -1,0 +1,48 @@
+# GraphQL从入门到放弃 https://xeblog.cn/articles/6
+# GraphQL 零基础教程 https://segmentfault.com/a/1190000021899271
+
+# 查询相关接口
+type Query {
+    # 通过id获取用户信息
+    getUserById(id: Int!): User
+    # 用户信息列表
+    listUser: [User]
+}
+
+# 变更相关接口
+#type Mutation {
+#    # 添加用户信息
+#    saveUser(user: addUserInput!): Boolean
+#    # 删除用户信息
+#    deleteUser(id: Int!): Boolean
+#    # 更新用户信息
+#    updateUser(user: updateUserInput!): Boolean
+#}
+
+# 用户信息对象
+type User {
+    # 编号
+    id: Int!
+    # 用户名
+    username: String!
+    # 密码
+    password: String!
+    # 年龄
+    age: Int
+}
+
+# 添加用户信息输入参数
+input addUserInput {
+    id: Int!
+    username: String!
+    password: String!
+    age: Int
+}
+
+# 更新用户信息输入参数
+input updateUserInput {
+    id: Int!
+    username: String!
+    password: String!
+    age: Int
+}
