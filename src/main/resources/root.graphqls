@@ -4,9 +4,9 @@
 # 查询相关接口
 type Query {
     # 通过id获取用户信息
-    getUserById(id: Int!): User
+    getUserById(id: Int!): UserDO
     # 用户信息列表
-    listUser: [User]
+    listUser: [UserDO]
 }
 
 # 变更相关接口
@@ -20,7 +20,7 @@ type Query {
 #}
 
 # 用户信息对象
-type User {
+type UserDO {
     # 编号
     id: Int!
     # 用户名
@@ -28,7 +28,6 @@ type User {
     # 密码
     password: String!
     # 年龄
-    age: Int
 }
 
 # 添加用户信息输入参数
@@ -36,7 +35,6 @@ input addUserInput {
     id: Int!
     username: String!
     password: String!
-    age: Int
 }
 
 # 更新用户信息输入参数
@@ -44,5 +42,4 @@ input updateUserInput {
     id: Int!
     username: String!
     password: String!
-    age: Int
 }

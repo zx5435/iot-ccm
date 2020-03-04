@@ -1,31 +1,26 @@
 package com.zx5435.gim;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.zx5435.gim.jpa.UserDAO;
+import com.zx5435.gim.model.UserDO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class UserQuery implements GraphQLQueryResolver {
 
-    private static Map<Integer, User> userMap = new HashMap<>();
+    @Autowired
+    UserDAO userDAO;
 
-    static {
-        userMap.put(1, new User(1, "asdfadf"));
-        userMap.put(2, new User(2, "adsvcv"));
-        userMap.put(3, new User(3, "hgfesd"));
-        userMap.put(4, new User(4, "wqer"));
+    public UserDO getUserById(Integer id) {
+        Optional<UserDO> byId = userDAO.findById(id);
+        return byId.orElse(null);
     }
 
-    public User getUserById(Integer id) {
-        return userMap.get(id);
-    }
-
-    public List<User> listUser() {
-        return new ArrayList<>(userMap.values());
+    public List<UserDO> listUser() {
+        return userDAO.findAll();
     }
 
 }

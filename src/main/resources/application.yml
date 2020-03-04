@@ -4,3 +4,13 @@ server:
 spring:
   application:
     name: hehe
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://:3306/?characterEncoding=UTF-8
+#    username: root
+#    password: 1
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
